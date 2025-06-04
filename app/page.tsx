@@ -45,7 +45,7 @@ export default function Home() {
     <Flex className="mainWrap">
       <div className="backgroundBlur" />
       <Flex className="header">
-        <Typography className="title blurAvoider">Collin King's Portfolio</Typography>
+        <Typography className="title blurAvoider">Collin King&apos;s Portfolio</Typography>
       </Flex>
       <Flex className="buttonHolder">
         <Button className="button" onClick={() => setCurrentState(contentState.home)}>Home</Button>
@@ -60,7 +60,7 @@ export default function Home() {
                 Full Stack Software Engineer | Building Scalable Web Applications
               </Typography>
               <Typography className="regularFont wrap">
-                I'm a software developer with an 8+ year career focused on full stack engineering with Typescript, Python, and AWS.
+                I&apos;m a software developer with an 8+ year career focused on full stack engineering with Typescript, Python, and AWS.
               </Typography>
             </Flex>
             <Flex className="toolsContainer">
@@ -90,19 +90,19 @@ export default function Home() {
               <Typography className="regularFont wrap">
                 I graduated from The University of Louisville in 2019 with by Bachelors in Computer Engineering and Computer Science.
                 And have worked on remote distributed teams since 2020, working in both enterprise and startup settings.
-                With a focus on full-stack development (though I've also had both frontend and backend specific roles). My primary
+                With a focus on full-stack development (though I&apos;ve also had both frontend and backend specific roles). My primary
                 languages of focus have been Typescript (React & Angular), Python (Django), & Java (Spring Boot). My main cloud solution
                 focus has been Amazon Web Services (AWS).
               </Typography>
             </Flex>
             <Flex className="subContent">
-            <Typography className="boldFont">What I'm Looking For in My Next Role</Typography>
+            <Typography className="boldFont">What I&apos;m Looking For in My Next Role</Typography>
               <Typography className="regularFont">
                 My goal is to continue to contribute as an individual contributor (IC), in roles where I can still contribute but might
                 also have the opportunity to mentor more junior developers and guide the teams trajectory. I want to be a part of a team
                 where I can see the impact my contribution has on the products users (whether internal or external). And a role where I
-                can say I'm making a difference somewhere, even if I'm 'only' making someone elses job easier I like being able to know
-                what my work goes towards and the business goals it is achieving.
+                can say I&apos;m making a difference somewhere, from making someone else&apos;s job easier to having community impact
+                I like being able to know what my work goes towards and the business goals it is achieving.
               </Typography>
             </Flex>
             <Flex className="subContent">
@@ -114,7 +114,7 @@ export default function Home() {
               </Typography>
               <Flex>
                 <Typography className="regularFont">
-                  I've even has some of my recreation math work published on&nbsp;
+                  I&apos;ve even has some of my recreation math work published on&nbsp;
                 </Typography>
                 <Link className="regularFont" href="https://oeis.org/A343403" target="_blank">The Online Encyclopedia of Integer Sequences.</Link>
               </Flex>
