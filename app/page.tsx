@@ -1,103 +1,135 @@
+"use client"
+import { Button, Flex, Typography } from "antd";
+const { Link } = Typography;
+import { useState } from "react";
+import reactIcon from '../public/react.svg';
+import angularIcon from '../public/angular.svg';
+import djangoIcon from '../public/django.svg';
+import githubIcon from '../public/github.svg';
+import gitlabIcon from '../public/gitlab.svg';
+import javascriptIcon from '../public/javascript.svg';
+import pythonIcon from '../public/python.svg';
+import springBootIcon from '../public/springboot.svg';
+import typescriptIcon from '../public/typescript.svg';
+import nextIcon from '../public/nextdotjs.svg';
+import nodeIcon from '../public/nodedotjs.svg';
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+enum contentState {
+  home,
+  projects,
+  about
+}
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+export default function Home() {
+  const [currentState, setCurrentState] = useState(contentState.home);
+
+  const tools = [
+    [{icon: typescriptIcon, text: "Typescript"}, {icon: reactIcon, text: "React"}, {icon: angularIcon, text: "Angular"}, {icon: javascriptIcon, text: "Javascript"}],
+    [{icon: pythonIcon, text: "Python"}, {icon: djangoIcon, text: "Django"}, {text: "Java"}, {icon: springBootIcon, text: "Spring Boot"}],
+    [{text: "AWS"}, {text: "Lambda"}, {text: "DynamoDB"}, {text: "RDS"}],
+    [{text: "SQL"}, {text: "NoSQL"}, {text: "CI/CD"}, {text: "Architecture"}],
+    [{icon: githubIcon, text: "GitHub"}, {icon: gitlabIcon, text: "GitLab"}, {icon: nextIcon, text: "Next.js"}, {icon: nodeIcon, text: "Node.js"}],
+  ]
+
+  const downloadResume = () => {
+    console.log('resume download');
+    const link = document.createElement('a');
+    link.href = '/resume.pdf';
+    link.download = 'resume.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  return (
+    <Flex className="mainWrap">
+      <div className="backgroundBlur" />
+      <Flex className="header">
+        <Typography className="title blurAvoider">Collin King's Portfolio</Typography>
+      </Flex>
+      <Flex className="buttonHolder">
+        <Button className="button" onClick={() => setCurrentState(contentState.home)}>Home</Button>
+        {/* <Button className="button" onClick={() => setCurrentState(contentState.projects)}>Projects</Button> */}
+        <Button className="button" onClick={() => setCurrentState(contentState.about)}>About Me</Button>
+        <Button className="button" onClick={() => downloadResume()}>Download Resume</Button>
+      </Flex>
+      <Flex className="mainContent blurAvoider">
+        {currentState === contentState.home && (
+          <Flex className="innerContentWrap">
+            <Flex className="center">
+              <Typography className="boldFont">
+                Full Stack Software Engineer | Building Scalable Web Applications
+              </Typography>
+              <Typography className="regularFont wrap">
+                I'm a software developer with an 8+ year career focused on full stack engineering with Typescript, Python, and AWS.
+              </Typography>
+            </Flex>
+            <Flex className="toolsContainer">
+              
+              <Typography className="regularFont wrap">
+                Some tools I use, you can find a more complete list on my resume (download above).
+              </Typography>
+              {/* <Image src={reactIcon} alt="React_Icon"></Image> */}
+              {tools.map((toolArr, index) => (
+                <Flex className="toolRow" key={index}>
+                  {toolArr.map((tool, subIndex) => (
+                    <Flex className="tool" key={subIndex}>
+                      {tool.icon && (<Image src={tool.icon} alt="icon"></Image>)}
+                      <Typography className="toolText">{tool.text}</Typography>
+                    </Flex>
+                  ))}
+                </Flex>
+              ))}
+            </Flex>
+            {/* tools used */}
+          </Flex>
+        )}
+        {currentState === contentState.projects && <Typography>projects</Typography>}
+        {currentState === contentState.about && (
+          <Flex className="innerContentWrap">
+            <Flex className="subContent">
+              <Typography className="boldFont">My Career</Typography>
+              <Typography className="regularFont wrap">
+                I graduated from The University of Louisville in 2019 with by Bachelors in Computer Engineering and Computer Science.
+                And have worked on remote distributed teams since 2020, working in both enterprise and startup settings.
+                With a focus on full-stack development (though I've also had both frontend and backend specific roles). My primary
+                languages of focus have been Typescript (React & Angular), Python (Django), & Java (Spring Boot). My main cloud solution
+                focus has been Amazon Web Services (AWS).
+              </Typography>
+            </Flex>
+            <Flex className="subContent">
+            <Typography className="boldFont">What I'm Looking For in My Next Role</Typography>
+              <Typography className="regularFont">
+                My goal is to continue to contribute as an individual contributor (IC), in roles where I can still contribute but might
+                also have the opportunity to mentor more junior developers and guide the teams trajectory. I want to be a part of a team
+                where I can see the impact my contribution has on the products users (whether internal or external). And a role where I
+                can say I'm making a difference somewhere, even if I'm 'only' making someone elses job easier I like being able to know
+                what my work goes towards and the business goals it is achieving.
+              </Typography>
+            </Flex>
+            <Flex className="subContent">
+            <Typography className="boldFont">Hobbies & Etc.</Typography>
+              <Typography className="regularFont">
+                I like to relax by playing video games with friends, since many have moved away. As well as board games with my nearby
+                friends and family; including Settlers of Catan, Quacks of Quedlinburg, and Magic the Gathering. I also enjoy programming
+                my video game ideas, creating art, and working recreational math problems.
+              </Typography>
+              <Flex>
+                <Typography className="regularFont">
+                  I've even has some of my recreation math work published on&nbsp;
+                </Typography>
+                <Link className="regularFont" href="https://oeis.org/A343403" target="_blank">The Online Encyclopedia of Integer Sequences.</Link>
+              </Flex>
+            </Flex>
+
+          </Flex>
+        )}
+      </Flex>
+      <Flex className="footer blurAvoider">
+        <Typography className="boldFont">Lets Connect | Email: collinmking1997@gmail.com | Cell: (502) 550 - 2494 |&nbsp;</Typography>
+        <Link className="boldFont" href="https://www.linkedin.com/in/cking1997/" target="_blank">LinkedIn</Link>
+      </Flex>
+    </Flex>
   );
 }
