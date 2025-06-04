@@ -17,7 +17,6 @@ import Image from "next/image";
 
 enum contentState {
   home,
-  projects,
   about
 }
 
@@ -50,7 +49,6 @@ export default function Home() {
       </Flex>
       <Flex className="buttonHolder">
         <Button className="button" onClick={() => setCurrentState(contentState.home)}>Home</Button>
-        {/* <Button className="button" onClick={() => setCurrentState(contentState.projects)}>Projects</Button> */}
         <Button className="button" onClick={() => setCurrentState(contentState.about)}>About Me</Button>
         <Button className="button" onClick={() => downloadResume()}>Download Resume</Button>
       </Flex>
@@ -85,7 +83,6 @@ export default function Home() {
             {/* tools used */}
           </Flex>
         )}
-        {currentState === contentState.projects && <Typography>projects</Typography>}
         {currentState === contentState.about && (
           <Flex className="innerContentWrap">
             <Flex className="subContent">
