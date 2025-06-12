@@ -124,7 +124,7 @@ export default function Home() {
         )}
       </Flex>
       <Flex className="footer blurAvoider">
-        <Typography className="boldFont">Lets Connect | Email: collinmking1997@gmail.com | Cell: (502) 550 - 2494 |&nbsp;</Typography>
+        <Typography className="boldFont">Contact Info | Email: collinmking1997@gmail.com | Cell: (502) 550 - 2494 |&nbsp;</Typography>
         <Link className="boldFont" href="https://www.linkedin.com/in/cking1997/" target="_blank">LinkedIn</Link>
       </Flex>
     </Flex>
